@@ -6,12 +6,24 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>677</width>
-    <height>519</height>
+    <width>454</width>
+    <height>485</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QPushButton {
+background-color:rgbargb(204, 204, 204 ,100);
+font-size:15pt
+}
+QPushButton:hover {
+    border: 2px solid rgb(221, 221, 221);
+}
+QLineEdit{
+font-size:18pt;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -199,6 +211,16 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: rgb(0, 155, 232);
+}
+QPushButton:hover {
+    background-color: rgb(50, 180, 255); /*  hover 时的背景色 */
+    color: white;
+    border: 2px solid rgb(0, 100, 180);
+}</string>
+        </property>
         <property name="text">
          <string>=</string>
         </property>
@@ -342,6 +364,9 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
         <property name="text">
          <string>7</string>
         </property>
@@ -369,7 +394,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>677</width>
+     <width>454</width>
      <height>25</height>
     </rect>
    </property>

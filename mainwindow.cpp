@@ -142,6 +142,7 @@ void MainWindow::btnBinaryOperatorClicked()
     opcode = qobject_cast<QPushButton *>(sender())->text();
     opcodes.push(opcode);
 
+
     // 清空当前操作数，准备接收新的操作数
     operand.clear();
     ui->statusbar->showMessage(opcode + " 已选择");
@@ -230,4 +231,53 @@ void MainWindow::on_btnSign_clicked()
     // 更新界面显示（假设用 ui->resultDisplay 显示操作数）
     ui->display->setText(operand);
 }
+
+void MainWindow::keyPressEvent(QKeyEvent *event)
+{
+    // 处理数字键
+    if (event->key() >= Qt::Key_0 && event->key() <= Qt::Key_9) {
+        // 将键盘数字转换为对应按钮的文本
+        QString num = QString::number(event->key() - Qt::Key_0);
+        operand += num;
+        ui->display->setText(operand);
+        ui->statusbar->showMessage("键盘输入: " + num);
+        return;
+    }
+
+    // 处理运算符
+    switch (event->key()) {
+    case Qt::Key_Plus:      // 加号
+        ui->btnPlus->click();
+        break;
+    case Qt::Key_Minus:     // 减号
+        ui->btnMinus->click();
+        break;
+    case Qt::Key_Asterisk:  // 乘号 (*)
+        ui->btnMultiple->click();
+        break;
+    case Qt::Key_Slash:     // 除号 (/)
+        ui->btnDivide->click();
+        break;
+    case Qt::Key_Equal:     // 等号
+    case Qt::Key_Return:    // 回车键
+    case Qt::Key_Enter:     // 小键盘回车键
+        ui->btnEqual->click();
+        break;
+    case Qt::Key_Period:    // 小数点
+    case Qt::Key_Comma:     // 逗号(部分键盘)
+        ui->btnPeriod->click();
+        break;
+    case Qt::Key_Backspace: // 退格键
+        ui->btnDel->click();
+        break;
+    case Qt::Key_Escape:    // ESC键清除
+        ui->btnClear->click();
+        break;
+    default:
+        // 不处理的按键交给父类处理
+        QMainWindow::keyPressEvent(event);
+    }
+}
+
+
 
